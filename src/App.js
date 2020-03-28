@@ -8,15 +8,14 @@ function App() {
   return (
     <div>
       <Header />
-      <h1>Home Page</h1>
 
       <Switch>
-        <route exact path="/">
+        <Route exact path="/">
           <Photos />
-        </route>
-        <route path="/cart">
+        </Route>
+        <Route path="/cart">
           <Cart />
-        </route>
+        </Route>
       </Switch>
     </div>
   );
