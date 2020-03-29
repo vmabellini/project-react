@@ -8,7 +8,7 @@ function Photos() {
   const context = useContext(AppContext);
 
   const images = context.pics.map((pic, index) => (
-    <Image key={pic.id} src={pic.url} className={getClass(index)} />
+    <Image key={pic.id} img={pic} className={getClass(index)} />
   ));
 
   return <main className="photos">{images}</main>;
