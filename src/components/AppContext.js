@@ -15,8 +15,6 @@ function AppContextProvider({ children }) {
       });
   }, []);
 
-  console.log(pics);
-
   return <AppContext.Provider value={{ pics }}>{children}</AppContext.Provider>;
 }
 
