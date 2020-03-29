@@ -19,6 +19,11 @@ function AppContextProvider({ children }) {
     setPics(updatedArr);
   }
 
+  function isFavorited(id) {
+    const pic = pics.find(item => item.id === id);
+    return pic.isFavorite;
+  }
+
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
@@ -30,7 +35,7 @@ function AppContextProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ pics, toggleFavorite }}>
+    <AppContext.Provider value={{ pics, toggleFavorite, isFavorited }}>
       {children}
     </AppContext.Provider>
   );

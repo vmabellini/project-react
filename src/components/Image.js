@@ -4,14 +4,21 @@ import { AppContext } from "../components/AppContext";
 function Image({ className, img }) {
   const [hovered, setHovered] = useState(false);
 
-  const { toggleFavorite } = useContext(AppContext);
+  const { toggleFavorite, isFavorited } = useContext(AppContext);
 
-  const heartIcon = hovered && (
+  const heartIcon = hovered && !isFavorited(img.id) && (
     <i
       className="ri-heart-line favorite"
       onClick={() => toggleFavorite(img.id)}
     ></i>
   );
+  const favoritedIcon = isFavorited(img.id) && (
+    <i
+      className="ri-heart-fill favorite"
+      onClick={() => toggleFavorite(img.id)}
+    ></i>
+  );
+
   const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>;
 
   return (
@@ -21,6 +28,7 @@ function Image({ className, img }) {
       onMouseLeave={() => setHovered(false)}
     >
       {heartIcon}
+      {favoritedIcon}
       {cartIcon}
       <img src={img.url} className="image-grid" />
     </div>
