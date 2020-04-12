@@ -20,10 +20,16 @@ function AppContextProvider({ children }) {
     setPics(updatedArr);
   }
 
-  function addToCart(image) {
-    setCartItems((prevItems) => [...prevItems, image]);
+  function addToCart(img) {
+    setCartItems((prevItems) => [...prevItems, img]);
+  }
 
-    console.log(cartItems);
+  function isInCart(img) {
+    return cartItems.some((el) => el.id === img.id);
+  }
+
+  function removeFromCart(img) {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== img.id));
   }
 
   useEffect(() => {
@@ -37,7 +43,9 @@ function AppContextProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ pics, toggleFavorite, addToCart }}>
+    <AppContext.Provider
+      value={{ pics, toggleFavorite, addToCart, isInCart, removeFromCart }}
+    >
       {children}
     </AppContext.Provider>
   );
