@@ -55,6 +55,7 @@ function AppContextProvider({ children }) {
         isInCart,
         removeFromCart,
         cartHasItems,
+        cartItems,
       }}
     >
       {children}
