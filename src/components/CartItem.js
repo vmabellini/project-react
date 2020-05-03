@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "./AppContext";
+import PropTypes from "prop-types";
 
 function CartItem({ item }) {
   const { removeFromCart } = useContext(AppContext);
@@ -22,5 +23,11 @@ function CartItem({ item }) {
     </div>
   );
 }
+
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }),
+};
 
 export default CartItem;
