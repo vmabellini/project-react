@@ -36,6 +36,15 @@ function AppContextProvider({ children }) {
     return cartItems.length > 0;
   }
 
+  function total() {
+    const unitPrice = 5.99;
+    const calculatedTotal = unitPrice * cartItems.length;
+    return calculatedTotal.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  }
+
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
@@ -56,6 +65,7 @@ function AppContextProvider({ children }) {
         removeFromCart,
         cartHasItems,
         cartItems,
+        total,
       }}
     >
       {children}
