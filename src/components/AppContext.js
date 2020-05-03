@@ -32,6 +32,10 @@ function AppContextProvider({ children }) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== img.id));
   }
 
+  function cartHasItems() {
+    return cartItems.length > 0;
+  }
+
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
@@ -44,7 +48,14 @@ function AppContextProvider({ children }) {
 
   return (
     <AppContext.Provider
-      value={{ pics, toggleFavorite, addToCart, isInCart, removeFromCart }}
+      value={{
+        pics,
+        toggleFavorite,
+        addToCart,
+        isInCart,
+        removeFromCart,
+        cartHasItems,
+      }}
     >
       {children}
     </AppContext.Provider>
