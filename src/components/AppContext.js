@@ -32,6 +32,10 @@ function AppContextProvider({ children }) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== img.id));
   }
 
+  function clearCart() {
+    setCartItems([]);
+  }
+
   function cartHasItems() {
     return cartItems.length > 0;
   }
@@ -65,6 +69,7 @@ function AppContextProvider({ children }) {
         removeFromCart,
         cartHasItems,
         cartItems,
+        clearCart,
         total,
       }}
     >
